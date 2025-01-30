@@ -6,6 +6,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+iframe {
+  height: 100%;
+  width: 100%;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

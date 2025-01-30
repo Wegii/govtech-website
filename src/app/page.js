@@ -137,15 +137,13 @@ export default function Home() {
 
                 {/* Additional Information */}
                 <motion.section className="h-screen flex justify-center items-center text-4xl snap-start z-10">
-
                     <ExpandableCardDemo/>
                 </motion.section>
 
-
                 {/* Datastory */}
-                <motion.section>
-                    <div className="h-[20rem] flex items-center justify-center">
-                        <TextHoverEffect text="Is Lithium the new Oil?"/>
+                <motion.section className="h-screen w-full flex justify-center items-center text-4xl snap-start z-10">
+                    <div className="z-20 h-screen w-full">
+                        <iframe src="https://storymaps.arcgis.com/stories/00982c33751e4537be417bd6bd15a9f0" allowFullScreen></iframe>
                     </div>
                 </motion.section>
             </div>
