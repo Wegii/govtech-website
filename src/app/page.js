@@ -15,10 +15,11 @@ import { useOutsideClick } from "@/components/hooks/use-outside-click";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
 import {
     IconArrowLeft,
-    IconBrandTabler,
-    IconSettings,
-    IconUserBolt,
+    IconDatabase,
+    IconReservedLine,
+    IconUsers,
 } from "@tabler/icons-react";
+
 import Link from "next/link";
 
 
@@ -28,39 +29,32 @@ export default function Home() {
     const links = [
         {
             label: "Dashboard",
-            href: "#",
+            href: "/data",
             icon: (
-                <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconDatabase className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
         {
-            label: "Profile",
+            label: "More Stories",
             href: "#",
             icon: (
-                <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconUsers className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
         {
-            label: "Settings",
+            label: "More Resources",
             href: "#",
             icon: (
-                <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconReservedLine className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
-        {
-            label: "Logout",
-            href: "#",
-            icon: (
-                <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-            ),
-        },
+
     ];
     const [open, setOpen] = useState(false);
 
 
 
     return (
-
         <div
             className={cn(
                 "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
@@ -77,48 +71,83 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
-                    <div>
-                        <SidebarLink
-                            link={{
-                                label: "Manu Arora",
-                                href: "#",
-                                icon: (
-                                    <Image
-                                        className="h-7 w-7 flex-shrink-0 rounded-full"
-                                        width={50}
-                                        height={50}
-                                        alt="Avatar"/>
-                                ),
-                            }}/>
-                    </div>
                 </SidebarBody>
             </Sidebar>
 
             <div className="h-screen w-full overflow-y-auto bg-gray-900 text-white snap-y snap-mandatory">
 
                 {/* Main Section */}
-                <motion.section className="h-screen flex justify-center items-center text-4xl snap-start z-10">
+                <motion.section className="h-screen flex flex-col justify-center items-center text-4xl snap-start z-10">
                     <div className="h-[20rem] flex items-center justify-center">
                         <TextHoverEffect text="Is Lithium the new Oil?"/>
+                    </div>
+                    {/* Pulsing Arrow */}
+                    <div className="animate-bounce mt-4">
+                        <svg
+                            className="w-10 h-10 text-gray-700"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path>
+                        </svg>
                     </div>
                 </motion.section>
 
                 {/* Image Comparison Slider */}
                 <motion.section className="h-screen flex justify-center items-center snap-start overflow-hidden z-10">
                     {/* Left Side */}
-                    <div className="w-1/2 flex flex-col justify-center items-start p-6">
-                        Test
+                    <div className="w-1/3 flex flex-col justify-center items-start p-6">
+                        <h2 className="title font-bold" style={{ fontWeight: 'bold', fontSize: '24px', marginBottom: '20px', textAlign: 'center' }}>Lithium Mining and Its Environmental Impact</h2>
+                        <div className="text-columns">
+                            <div className="left-column">
+                                <p>
+                                    The Salar de Atacama, located in northern Chile, is one of the largest salt flats in
+                                    the world,
+                                    and it holds one of the richest deposits of lithium brine. The extraction of lithium
+                                    from this area
+                                    has made it a critical region in the global supply chain for electric vehicle
+                                    batteries and other
+                                    high-tech products.
+                                </p>
+                                <br/>
+                                <p>
+                                    Despite its significance, the environmental impact of lithium mining is a growing
+                                    concern. Water
+                                    scarcity, biodiversity loss, and land degradation are some of the issues associated
+                                    with mining in
+                                    the Salar de Atacama. Sustainable solutions are needed to balance economic demand
+                                    with environmental preservation.
+                                </p>
+                            </div>
+                            <br/>
+                            <div className="right-column">
+                                <p>
+                                    The Salar de Atacama is also home to the lithium mines that fuel the rapid growth of
+                                    renewable energy industries.
+                                    However, the extraction process consumes vast amounts of water in a region already
+                                    struggling with arid conditions.
+                                    This has raised alarms among environmentalists, calling for more sustainable mining
+                                    practices and technologies.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Right Side */}
-                    <div className="w-1/2 flex justify-center items-center background-color: black ">
-                        <CompareImages
-                            leftImage="/atacama_old.png"
-                            rightImage="/atacama_new.jpg"
-                            leftAlt="Before Image"
-                            rightAlt="After Image"
-                            rightImageAlt="borderRadius: '5px!important'"
-                        />
+                    <div className="h-0.5 w-2/3 flex justify-center items-center background-color: black ">
+                        <div className="w-3/4 rounded-lg overflow-hidden">
+
+                            <CompareImages
+                                leftImage="/atacama_old.png"
+                                rightImage="/atacama_new.jpg"
+                                leftAlt="Before Image"
+                                rightAlt="After Image"
+                                rightImageAlt="borderRadius: '5px!important'"
+                            />
+                        </div>
                     </div>
                 </motion.section>
 
@@ -135,15 +164,27 @@ export default function Home() {
                     </div>
                 </motion.section>
 
-                {/* Additional Information */}
+                {/* Video stories*/}
                 <motion.section className="h-screen flex justify-center items-center text-4xl snap-start z-10">
-                    <ExpandableCardDemo/>
+                    <section className="flex h-screen">
+                        {/* Left Side - One Third */}
+                        <div className="w-1/3  flex flex-col items-center justify-center p-6">
+                            <h2 className="text-xl font-semibold text-center">Video Stories</h2>
+                            <p className="mt-4">Click on the tiles on the right for more information</p>
+                        </div>
+
+                        {/* Right Side - Two Thirds */}
+                        <div className="w-2/3  flex items-center justify-center p-6">
+                            <ExpandableCardDemo/>
+                        </div>
+                    </section>
                 </motion.section>
 
                 {/* Datastory */}
                 <motion.section className="h-screen w-full flex justify-center items-center text-4xl snap-start z-10">
                     <div className="z-20 h-screen w-full">
-                        <iframe src="https://storymaps.arcgis.com/stories/00982c33751e4537be417bd6bd15a9f0" allowFullScreen></iframe>
+                        <iframe src="https://storymaps.arcgis.com/stories/00982c33751e4537be417bd6bd15a9f0"
+                                allowFullScreen></iframe>
                     </div>
                 </motion.section>
             </div>
@@ -155,69 +196,7 @@ export default function Home() {
     );
 }
 
-/* Navigation bar at the top*/
-function Navbar() {
-    const [active, setActive] = useState(0); /* useState<string | null>(null);*/
-    const className = "top-2";
 
-    return (
-        <div
-            className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-20", className)}
-        >
-            <Menu setActive={setActive}>
-                <MenuItem setActive={setActive} active={active} item="About">
-
-                </MenuItem>
-                <MenuItem setActive={setActive} active={active} item="Data">
-
-                </MenuItem>
-                <MenuItem setActive={setActive} active={active} item="More">
-
-                </MenuItem>
-            </Menu>
-        </div>
-    );
-}
-
-function SidebarDemo() {
-
-    return (
-        (<div
-            className={cn(
-                "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 max-w-7xl mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-                // for your use case, use `h-screen` instead of `h-[60vh]`
-                "h-[60vh]"
-            )}>
-            <Sidebar open={open} setOpen={setOpen}>
-                <SidebarBody className="justify-between gap-10">
-                    <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-                        {open ? <Logo/> : <LogoIcon/>}
-                        <div className="mt-8 flex flex-col gap-2">
-                            {links.map((link, idx) => (
-                                <SidebarLink key={idx} link={link}/>
-                            ))}
-                        </div>
-                    </div>
-                    <div>
-                        <SidebarLink
-                            link={{
-                                label: "Manu Arora",
-                                href: "#",
-                                icon: (
-                                    <Image
-                                        className="h-7 w-7 flex-shrink-0 rounded-full"
-                                        width={50}
-                                        height={50}
-                                        alt="Avatar"/>
-                                ),
-                            }}/>
-                    </div>
-                </SidebarBody>
-            </Sidebar>
-
-        </div>)
-    );
-}
 export const Logo = () => {
     return (
         (<Link
@@ -229,7 +208,7 @@ export const Logo = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="font-medium text-black dark:text-white whitespace-pre">
-                Acet Labs
+                Lithium Mining Databoard
             </motion.span>
         </Link>)
     );
@@ -244,33 +223,6 @@ export const LogoIcon = () => {
         </Link>)
     );
 };
-
-// Dummy dashboard component with content
-const Dashboard = () => {
-    return (
-        (<div className="flex flex-1">
-            <div
-                className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-                <div className="flex gap-2">
-                    {[...new Array(4)].map((i) => (
-                        <div
-                            key={"first-array" + i}
-                            className="h-20 w-full rounded-lg  bg-gray-100 dark:bg-neutral-800 animate-pulse"></div>
-                    ))}
-                </div>
-                <div className="flex gap-2 flex-1">
-                    {[...new Array(2)].map((i) => (
-                        <div
-                            key={"second-array" + i}
-                            className="h-full w-full rounded-lg  bg-gray-100 dark:bg-neutral-800 animate-pulse"></div>
-                    ))}
-                </div>
-            </div>
-        </div>)
-    );
-};
-
-
 
 /* Information cards */
 export const CloseIcon = () => {
@@ -307,9 +259,9 @@ export const CloseIcon = () => {
 
 const cards = [
     {
-        description: "Video",
-        title: "Summertime Sadness",
-        src: "/atacama_old.png",
+        description: "Documentary",
+        title: "Lithium Extraction in Chile",
+        src: "/images/videos/video_1.webp",
         ctaText: "Visit",
         ctaLink: "https://www.youtube.com/watch?v=h0hMetLlBDw",
         content: () => {
@@ -320,65 +272,43 @@ const cards = [
         },
     },
     {
-        description: "Babbu Maan",
-        title: "Mitran Di Chhatri",
-        src: "/atacama_old.png",
+        description: "Documentary",
+        title: "The Truth about Lithium",
+        src: "/images/videos/video_2.webp",
         ctaText: "Visit",
-        ctaLink: "https://ui.aceternity.com/templates",
+        ctaLink: "https://www.youtube.com/watch?v=bAgGpm-3uRI",
         content: () => {
             return (
-                (<p>Babu Maan, a legendary Punjabi singer, is renowned for his soulful
-                    voice and profound lyrics that resonate deeply with his audience. Born
-                    in the village of Khant Maanpur in Punjab, India, he has become a
-                    cultural icon in the Punjabi music industry. <br /> <br />His songs
-                    often reflect the struggles and triumphs of everyday life, capturing
-                    the essence of Punjabi culture and traditions. With a career spanning
-                    over two decades, Babu Maan has released numerous hit albums and
-                    singles that have garnered him a massive fan following both in India
-                    and abroad.
+                (<p>
+                    A Beacon of Hope for a Climate-Friendly Future or a Massive Environmental Problem?
+                    Approximately one gram of lithium is found in every smartphone battery, while the battery of an electric car contains around 15 kilograms. Without this lightweight metal, e-mobility would be unthinkable. But where does lithium actually come from, and what are the environmental consequences of its extraction?
                 </p>)
             );
         },
     },
 
     {
-        description: "Metallica",
-        title: "For Whom The Bell Tolls",
-        src: "/atacama_old.png",
+        description: "Documentary",
+        title: "The Cost of Lithium Extraction",
+        src: "/images/videos/video_3.jpg",
         ctaText: "Visit",
-        ctaLink: "https://ui.aceternity.com/templates",
+        ctaLink: "https://www.youtube.com/watch?v=nl0E-UhKB5E",
         content: () => {
             return (
-                (<p>Metallica, an iconic American heavy metal band, is renowned for their
-                    powerful sound and intense performances that resonate deeply with
-                    their audience. Formed in Los Angeles, California, they have become a
-                    cultural icon in the heavy metal music industry. <br /> <br />Their
-                    songs often reflect themes of aggression, social issues, and personal
-                    struggles, capturing the essence of the heavy metal genre. With a
-                    career spanning over four decades, Metallica has released numerous hit
-                    albums and singles that have garnered them a massive fan following
-                    both in the United States and abroad.
+                (<p>
                 </p>)
             );
         },
     },
     {
-        description: "Lord Himesh",
-        title: "Aap Ka Suroor",
-        src: "/atacama_old.png",
+        description: "Documentary",
+        title: "Lithium for EVs",
+        src: "/images/videos/video_4.jpg",
         ctaText: "Visit",
-        ctaLink: "https://ui.aceternity.com/templates",
+        ctaLink: "https://www.youtube.com/watch?v=BlWw2zaw4pU",
         content: () => {
             return (
-                (<p>Himesh Reshammiya, a renowned Indian music composer, singer, and
-                    actor, is celebrated for his distinctive voice and innovative
-                    compositions. Born in Mumbai, India, he has become a prominent figure
-                    in the Bollywood music industry. <br /> <br />His songs often feature
-                    a blend of contemporary and traditional Indian music, capturing the
-                    essence of modern Bollywood soundtracks. With a career spanning over
-                    two decades, Himesh Reshammiya has released numerous hit albums and
-                    singles that have garnered him a massive fan following both in India
-                    and abroad.
+                (<p>
                 </p>)
             );
         },
